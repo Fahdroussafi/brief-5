@@ -1,13 +1,14 @@
 <?php
-// require_once './database/DB.php';
-if (!$_SESSION['admin']){
+
+if ($_SESSION['role'] == 0) {
     Redirect::to(BASE_URL);
 }
-
 if (isset($_POST['submit'])) {
-    $newFlight = new FlightController();
-    $newFlight->addFlight();
+    $newVol = new VolsController();
+    $newVol->addVol();
 }
+
+
 ?>
 
 <head>
@@ -23,7 +24,7 @@ if (isset($_POST['submit'])) {
         <div class="col-md-8 mx-auto">
             <div class="card">
                 <div class="card-body bg-light-gray">
-                    <a href="<?php echo BASE_URL; ?>home" class="btn btn-sm btn-secondary mr-2 mb-2">
+                    <a href="<?php echo BASE_URL; ?>homeadmin" class="btn btn-sm btn-secondary mr-2 mb-2">
                         <i class="fa fa-home"></i>
                     </a>
                     <form method="post">
@@ -37,11 +38,11 @@ if (isset($_POST['submit'])) {
                         </div>
                         <div class="form-group mb-4">
                             <label for="depart">Depart*</label>
-                            <input type="datetime-local" name="depart" class="form-control" placeholder="Depart Time">
+                            <input type="datetime-local" name="dep_time" class="form-control" placeholder="Depart Time">
                         </div>
                         <div class="form-group mb-4">
                             <label for="returntime">Return Time*</label>
-                            <input type="datetime-local" name="returntime" class="form-control" placeholder="Return Time">
+                            <input type="datetime-local" name="return_time" class="form-control" placeholder="Return Time">
                         </div>
                         <div class="form-group mb-4">
                             <label for="price">Price*</label>
@@ -51,10 +52,10 @@ if (isset($_POST['submit'])) {
                             <label for="nbrSeats">Seats*</label>
                             <input type="text" name="nbrSeats" class="form-control" placeholder="Seats">
                         </div>
-                        <!-- <div class="form-group mb-4">
+                        <div class="form-group mb-4">
                             <label for="nbrSeatsReserved">Seats Reserved*</label>
                             <input type="text" name="nbrSeatsReserved" class="form-control" placeholder="Seats Reserved">
-                        </div> -->
+                        </div>
 
                         <div class="form-group mb-4">
                             <label>Flight Type*</label>

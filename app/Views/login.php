@@ -47,7 +47,6 @@ if (isset($_POST['submit'])) {
             <button name="submit" class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
             <div class="card-footer">
                 <a href="<?php echo BASE_URL; ?>register" class="btn btn-link">Register</a>
-                <a href="<?php echo BASE_URL; ?>loginAdmin" class="btn btn-link">Login As Admin</a>
 
             </div>
         </form>

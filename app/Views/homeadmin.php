@@ -1,11 +1,17 @@
 <?php
-if (isset($_POST['search'])) {
-    $data = new FlightController();
-    $flights = $data->findFlight();
-} else {
-    $data = new FlightController();
-    $flights = $data->getAllFlights();
+
+if ($_SESSION['role'] == 0) {
+    Redirect::to(BASE_URL);
 }
+
+if (isset($_POST['find'])) {
+    $data = new VolsController();
+    $vols = $data->findVols();
+} else {
+    $data = new VolsController();
+    $vols = $data->getAllVols();
+}
+
 // // print_r($flights);
 ?>
 
@@ -23,7 +29,7 @@ if (isset($_POST['search'])) {
         <div class="table-responsive">
             <div class="col-md-14 mx-auto">
                 <?php include('./views/includes/alerts.php'); ?>
-                <a href="<?php echo BASE_URL; ?>home" class="btn btn-sm btn-secondary mr-2 mb-2">
+                <a href="<?php echo BASE_URL; ?>homeadmin" class="btn btn-sm btn-secondary mr-2 mb-2">
                     <i class="fa fa-home"></i>
                 </a>
                 <a href="<?php echo BASE_URL; ?>add" class="btn btn-sm btn-primary mr-2 mb-2">
@@ -72,18 +78,18 @@ if (isset($_POST['search'])) {
                         </thead>
                         <tbody>
 
-                            <?php foreach ($flights as $flight) : ?>
+                            <?php foreach ($vols as $vols) : ?>
                                 <tr>
-                                    <td scope="col"><?php echo $flight['origin']; ?>
-                                    <td><?php echo $flight['destination']; ?></td>
-                                    <td><?php echo $flight['dep_time']; ?></td>
-                                    <td><?php echo $flight['return_time']; ?></td>
-                                    <td><?php echo $flight['price']; ?></td>
-                                    <td><?= $flight["nbrSeats"] - $flight["nbrSeatsReserved"] ?> / <?= $flight["nbrSeats"] ?></td>
-                                    <td><?php echo $flight['nbrSeatsReserved']; ?></td>
+                                    <td scope="col"><?php echo $vols['origin']; ?>
+                                    <td><?php echo $vols['destination']; ?></td>
+                                    <td><?php echo $vols['dep_time']; ?></td>
+                                    <td><?php echo $vols['return_time']; ?></td>
+                                    <td><?php echo $vols['price']; ?></td>
+                                    <td><?= $vols["nbrSeats"] - $vols["nbrSeatsReserved"] ?> / <?= $vols["nbrSeats"] ?></td>
+                                    <td><?php echo $vols['nbrSeatsReserved']; ?></td>
 
                                     <td>
-                                        <?php echo $flight['flighttype']
+                                        <?php echo $vols['flighttype']
                                             ?
                                             '<span class="badge bg-secondary">One Way</span>'
                                             :
@@ -91,11 +97,11 @@ if (isset($_POST['search'])) {
 
                                     <td class="d-flex flex-row mt-4">
                                         <form method="post" class="mr-1" action="update">
-                                            <input type="hidden" name="id" value="<?php echo $flight['id']; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $vols['id']; ?>">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </form>
                                         <form method="post" class="mr-1" action="delete">
-                                            <input type="hidden" name="id" value="<?php echo $flight['id']; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $vols['id']; ?>">
                                             <button class="btn btn-sm btn-danger"><i class="fa p-auto fa-trash"></i></button>
                                         </form>
                                     </td>

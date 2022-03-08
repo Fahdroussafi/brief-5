@@ -1,38 +1,35 @@
 <?php
-class User
-{
 
-    static public function createUser($data)
-    {
-        $stmt = DB::connect()->prepare('INSERT INTO user
-        (fullname,username,password)
-        VALUES(:fullname,:username,:password)');
-        $stmt->bindParam(':fullname', $data['fullname']);
-        $stmt->bindParam(':username', $data['username']);
-        $stmt->bindParam(':password', $data['password']);
-
-        if ($stmt->execute()) {
-            return 'ok';
-        } else {
-            return 'error';
-        }
-        // $stmt->close();
-        // $stmt->db = null;
-        $stmt = null;
-    }
-
-    static public function Login($data)
-    {
+class User{
+    
+    static public function login($data){
         $username = $data['username'];
-        $password = $data['password'];
-        try {
-            $query = 'SELECT * FROM user WHERE username=:username AND password=:password';
+        try{
+            $query = 'SELECT * FROM users WHERE username=:username';
             $stmt = DB::connect()->prepare($query);
-            $stmt->execute(array(":username" => $username, ":password" => $password));
-            $User = $stmt->fetch(PDO::FETCH_OBJ);
-            return $User;
-        } catch (PDOException $ex) {
-            echo 'erreur' . $ex->getMessage();
+            $stmt->execute(array(":username" => $username));
+            $user = $stmt->fetch(PDO::FETCH_OBJ);
+            return $user;
+            if($stmt->execute()){
+                return 'ok';
+            }
+        }catch(PDOException $ex){
+            echo 'error'.$ex->getMessage();
         }
+    }
+    static public function createUser($data){
+        try{
+        $stmt = DB::connect()->prepare('INSERT INTO users (fullname,username,password) VALUES (:fullname,:username,:password)');
+        $stmt->bindParam(':fullname',$data['fullname']);
+        $stmt->bindParam(':username',$data['username']);
+        $stmt->bindParam(':password',$data['password']);
+        if($stmt->execute()){
+            return 'ok';
+        }
+        }catch(PDOException $ex){
+            return '<div style="background-color : #ff3851;"><h4 style="color:red;">Username Already Exist Choose an other One </h4></div>';
+        }
+
+        $stmt = null;
     }
 }

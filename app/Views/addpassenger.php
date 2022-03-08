@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
                     <form id="login-form" class="form" action="" method="post">
                         <div class="form-group" style="display:none">
                             <label for="user_id" class="text-info">id_client:</label><br>
-                            <input type="text" name="user_id" id="user_id" value="<?php echo 13; ?>" class="form-control">
+                            <input type="text" name="user_id" id="user_id" value="<?php echo $_SESSION['username']; ?>" class="form-control">
                         </div>
                         <div class="form-group" style="display:none">
                             <label for="reservation_id" class="text-info">reservation_id:</label><br>
@@ -62,7 +62,6 @@ if (isset($_POST['submit'])) {
                             <label for="birthday">Birthday</label>
                             <input type="date" name="birthday" class="form-control" value="" placeholder="Birthday">
                         </div>
-
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" name="submit" value="submit">Add passenger</button>
                         </div>

@@ -12,7 +12,8 @@ function autoload($class_name)
 		'database/',
 		'classes/',
 		'Models/',
-		'Controllers/'
+		'Controllers/',
+		'Views/'
 	);
 
 	$parts = explode('\\', $class_name);

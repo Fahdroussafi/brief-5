@@ -3,12 +3,20 @@
 //     Redirect::to(BASE_URL);
 // }
 
-if (isset($_POST['reserve'])) {
-    $data = new FlightController();
-    $flights = $data->reserveFlight();
-} else {
-    $data = new FlightController();
-    $flights = $data->getAllreservations();
+// if (isset($_POST['search'])) {
+//     $data = new FlightController();
+//     $flights = $data->findFlight();
+// } else {
+//     $data = new FlightController();
+//     $flights = $data->getAllFlights();
+// }
+// if (isset($_POST['search'])) {
+//     $data = new ReservationController();
+//     $reservation = $data->findReservation();
+// } else {
+{
+    $data = new ReservationController();
+    $reservations = $data->getAllreservation();
 }
 
 ?>
@@ -34,27 +42,28 @@ if (isset($_POST['reserve'])) {
                         <tr>
                             <th scope="col"></th>
                             <th scope="col"><i class="fa fa-id-badge"></i> Reservation ID</th>
-                            <th scope="col"><i class="fa fa-plane-departure"></i> Origin</th>
-                            <th scope="col"><i class="fa fa-map-marked-alt"></i> Destination</th>
-                            <th scope="col"><i class="fa fa-clock"></i> Departure Time</th>
-                            <th scope="col"><i class="fa fa-id-card-alt"></i> Customer</th>
-                            <th scope="col"><i class="fa fa-passport"></i> Flight ID</th>
-                            <th scope="col"><i class="fa fa-location-arrow"></i> Flight Type</th>
+                            <th scope="col"><i class="fa fa-plane-departure"></i> User ID</th>
+                            <th scope="col"><i class="fa fa-map-marked-alt"></i> Flight ID</th>
+                            <!-- <th scope="col"><i class="fa fa-clock"></i> Flight type</th> -->
+                            <th scope="col"><i class="fa fa-id-card-alt"></i> Origin</th>
+                            <th scope="col"><i class="fa fa-passport"></i> Destination</th>
+                            <th scope="col"><i class="fa fa-location-arrow"></i> Depart Time</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($flights as $flight) : ?>
+                        <?php foreach ($reservations as $reservation) : ?>
                             <tr>
                                 <td></td>
-                                <td><?php echo $flight['id']; ?></td>
-                                <td><?php echo $flight['origin']; ?></td>
-                                <td><?php echo $flight['destination']; ?></td>
-                                <td><?php echo $flight['dep_time']; ?></td>
-                                <td><?php echo $flight['fname']; ?></td>
-                                <td><?php echo $flight['flight_id']; ?></td>
+                                <td><?php echo $reservation['id']; ?></td>
+                                <td><?php echo $reservation['user_id']; ?></td>
+                                <td><?php echo $reservation['flight_id']; ?></td>
+                                <td><?php echo $reservation['flight_type']; ?></td>
+                                <td><?php echo $reservation['origin']; ?></td>
+                                <td><?php echo $reservation['destination']; ?></td>
+                                <td><?php echo $reservation['dep_time']; ?></td>
                                 <td>
-                                    <?php echo $flight['flight_type'] == "One Way"
+                                    <?php echo $reservation['flight_type'] == "One Way"
                                         ?
                                         '<h5><span class="badge bg-primary"><i class="fa fa-location-arrow"></i> One Way</span></h5>'
                                         :
