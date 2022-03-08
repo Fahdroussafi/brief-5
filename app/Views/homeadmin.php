@@ -4,7 +4,7 @@ if ($_SESSION['role'] == 0) {
     Redirect::to(BASE_URL);
 }
 
-if (isset($_POST['find'])) {
+if (isset($_POST['search'])) {
     $data = new VolsController();
     $vols = $data->findVols();
 } else {
@@ -37,7 +37,7 @@ if (isset($_POST['find'])) {
                     <i class="fa fa-plus"></i>
 
 
-                    <a href="<?php echo BASE_URL; ?>loginAdmin" title="Déconnexion" class="btn btn-link mr-2 mb-2">
+                    <a href="<?php echo BASE_URL; ?>login" title="Déconnexion" class="btn btn-link mr-2 mb-2">
                         <i class="fas fa-user mr-2"> <?php echo "Logout"; ?></i>
                     </a>
                     <form method="post" class="float-end mb-2 d-flex flew-row">

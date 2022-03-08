@@ -1,24 +1,17 @@
 <?php
-// if ($_SESSION['role'] == 0) {
-//     Redirect::to(BASE_URL);
-// }
 
-// if (isset($_POST['search'])) {
-//     $data = new FlightController();
-//     $flights = $data->findFlight();
-// } else {
-//     $data = new FlightController();
-//     $flights = $data->getAllFlights();
-// }
-// if (isset($_POST['search'])) {
-//     $data = new ReservationController();
-//     $reservation = $data->findReservation();
-// } else {
-{
-    $data = new ReservationController();
-    $reservations = $data->getAllreservation();
+
+if ($_SESSION['role'] == 0) {
+    Redirect::to(BASE_URL);
 }
 
+if (isset($_POST['reserve'])) {
+    $data = new VolsController();
+    $vols = $data->reserveFlight();
+} else {
+    $data = new VolsController();
+    $vols = $data->getAllreservations();
+}
 ?>
 
 <div class="container">

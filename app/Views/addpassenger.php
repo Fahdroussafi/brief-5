@@ -1,20 +1,10 @@
 <?php
 
-// error_reporting(0);
-if (isset($_POST['id'])) {
-    $existFlight = new FlightController();
-    $flight = $existFlight->getOneFlight();
-} else {
-    Redirect::to('reserve');
+if (isset($_POST['addpass'])) {
+    $addPassenger = new VolsController();
+    $addPassenger->addPassenger();
 }
 
-if (isset($_POST['submit'])) {
-
-    $data = new ReservationController();
-    $data->addReservation();
-    $pass = new PessengerController();
-    $pass->addPassager();
-}
 ?>
 
 <head>
@@ -30,7 +20,7 @@ if (isset($_POST['submit'])) {
                 </div>
                 <div class="card-body bg-light">
                     <div>
-                        <a href="<?php echo BASE_URL; ?>reserve" class="btn btn btn-secondary mr-2 mb-2">
+                        <a href="<?php echo BASE_URL; ?>showvols" class="btn btn btn-secondary mr-2 mb-2">
                             <i class="fas fa-home"></i>
                         </a>
                         <a href="<?php echo BASE_URL; ?>logout" title="Logout" class="btn btn-outline-primary float-end">

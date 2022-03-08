@@ -1,19 +1,17 @@
 <?php
-if (isset($_POST['find'])) {
-    $data = new VolsController();
-    $vols = $data->findVols();
-} else {
-    $data = new VolsController();
-    $vols = $data->getAllVols();
+
+
+if ($_SESSION['role'] == 1) {
+    Redirect::to(BASE_URL);
 }
 
 if (isset($_POST['reserve'])) {
     $data = new VolsController();
-    $flights = $data->reserveFlight();
+    $vols = $data->reserveFlight();
+} else {
+    $data = new VolsController();
+    $vols = $data->getAllreservations();
 }
-$data = new VolsController();
-$flights = $data->getAllVols();
-
 ?>
 
 <link rel="stylesheet" href="./views/assets/css/style.css">
@@ -24,6 +22,7 @@ $flights = $data->getAllVols();
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php echo BASE_URL ?>">
             <img src="./views/assets/images/whitelogo.png" alt="">
+            <!-- <i class="fab fa-github fa-2x mx-3 ps-1"></i> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -62,7 +61,7 @@ $flights = $data->getAllVols();
 <!-- Navbar -->
 <div class="content">
     <div class="container">
-        <h1 class="mb-5 d-flex justify-content-center">BOOKING MANAGEMENT</h1>
+        <h1 class="mb-5 d-flex justify-content-center">FLIGHTS RESERVED</h1>
         <div class="table-responsive">
             <?php include('./views/includes/alerts.php'); ?>
             <table class="table table-striped custom-table">
@@ -71,8 +70,6 @@ $flights = $data->getAllVols();
                         <th scope="col">Origin</th>
                         <th scope="col">Destination</th>
                         <th scope="col">Departure Time</th>
-                        <th scope="col">Arrival Time</th>
-                        <th scope="col">Seats</th>
                         <th scope="col">Flight Type</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -87,22 +84,20 @@ $flights = $data->getAllVols();
                             <td>
                                 <?php echo $vol['dep_time']; ?>
                             </td>
-                            <td><?php echo $vol['return_time']; ?></td>
-                            <td><?php echo $vol['nbrSeats']; ?></td>
-                            <td><?php echo $vol['flighttype']
+                            <td><?php echo $vol['flight_type']
                                     ?
                                     '<span class="badge bg-light text-dark">One way</span>'
                                     :
                                     '<span class="badge bg-warning">Round trip</span>';; ?></td>
                             <td class="d-flex flex-row justify-content-evenly">
-                                <form method="POST" action="" class="mr-3">
-                                    <input type="text" hidden name="id" value="<?php echo $vol['id']; ?>">
-                                    <input type="text" hidden name="origin" value="<?php echo $vol['origin']; ?>">
-                                    <input type="text" hidden name="destination" value="<?php echo $vol['destination']; ?>">
-                                    <input type="text" hidden name="dep_time" value="<?php echo $vol['dep_time']; ?>">
-                                    <input type="text" hidden name="return_time" value="<?php echo $vol['return_time']; ?>">
-                                    <input type="text" hidden name="flighttype" value="<?php echo $vol['flighttype']; ?>">
-                                    <button class="btn btn-sm btn-success " type="submit" name="reserve">Book</button>
+                                <form method="post" class="mr-2" action="addpassenger">
+                                    <input type="hidden" name="id" value="<?php echo $vol['id']; ?>">
+                                    <button class="btn btn btn-success"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
+                                </form>
+
+                                <form method="POST" action="deleterev" class="mr-2">
+                                    <input type="hidden" name="iddelete" value="<?php echo $vol['id']; ?>">
+                                    <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
                                 </form>
                             </td>
                         </tr>

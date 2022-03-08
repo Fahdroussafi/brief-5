@@ -13,7 +13,7 @@ require_once './views/includes/footer.php';
 
 $homeuser = new HomeController();
 
-$pages = ['homeuser', 'homeadmin', 'landpage', 'add', 'update', 'delete', 'register', 'login', 'logout', 'reserve', 'homeusser', 'addpassenger', 'allres'];
+$pages = ['homeuser', 'homeadmin', 'landpage', 'add', 'update', 'delete', 'register', 'login', 'logout', 'addpassenger', 'showvols', 'showvols', 'allres', 'deleterev'];
 
 
 if (isset($_SESSION['login']) && $_SESSION['login'] === true) {

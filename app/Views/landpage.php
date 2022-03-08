@@ -1,13 +1,13 @@
 <!-- Custom styles for this template -->
-<link href="./views/assets/css/carousel.css" rel="stylesheet">
+<link href="./views/includes/css/carousel.css" rel="stylesheet">
 
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand"><img src="./views/assets/images/Logo1.png"></a>
+            <a class="navbar-brand"><img src="./views/includes/images/Logo1.png"></a>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>">Reserve</a></p>
+                <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>login">Reserve</a></p>
                 </ul>
             </div>
         </div>
@@ -25,18 +25,18 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img src="./views/assets/images/img4.jpg" class="d-block w-100">
+                <img src="./views/includes/images/img4.jpg" class="d-block w-100">
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1>San Francisco</h1>
                         <p>The Golden Gate Bridge is a suspension bridge spanning the Golden Gate, the one-mile-wide strait connecting San Francisco Bay and the Pacific Ocean.</p>
-                        <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>login">Log in</a></p>
-                        <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>logout">Log out</a></p>
+                        <!-- <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>login">Log in</a></p> -->
+                        <!-- <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>logout">Log out</a></p> -->
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./views/assets/images/img1.jpg" class="d-block w-100">
+                <img src="./views/includes/images/img1.jpg" class="d-block w-100">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>The Caribbean</h1>
@@ -46,7 +46,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img src="./views/assets/images/h1.jpg" class="d-block w-100">
+                <img src="./views/includes/images/h1.jpg" class="d-block w-100">
                 <div class="container">
                     <div class="carousel-caption text-end">
                         <h1>Marakesh</h1>
@@ -76,7 +76,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4">
-                <img src="./views/assets/images/pt2.jpg" class="rounded-circle" width="100" height="100" focusable="false">
+                <img src="./views/includes/images/pt2.jpg" class="rounded-circle" width="100" height="100" focusable="false">
                 <rect width="100%" height="100%" fill="#777" />
 
                 <h2>Victorine Andréa</h2>
@@ -84,7 +84,7 @@
 
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./views/assets/images/pt3.png" class="rounded-circle" width="100" height="100" focusable="false">
+                <img src="./views/includes/images/pt3.png" class="rounded-circle" width="100" height="100" focusable="false">
                 <rect width="100%" height="100%" fill="#777" />
 
                 <h2>Naliaka Chinyelu</h2>
@@ -92,7 +92,7 @@
 
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4">
-                <img src="./views/assets/images/pt4.jpg" class="rounded-circle" width="100" height="100" focusable="false">
+                <img src="./views/includes/images/pt4.jpg" class="rounded-circle" width="100" height="100" focusable="false">
                 <rect width="100%" height="100%" fill="#777" />
 
                 <h2>Flora Ariane</h2>
@@ -112,7 +112,7 @@
                 <p class="lead">We are simplifying the travel experience from booking to flying and giving you more control. Learn how we're eliminating change fees and making it easier to adjust your travel plans.</p>
             </div>
             <div class="col-md-5">
-                <img src="./views/assets/images/seat1.jpg" class="img-fluid" width="500" height="500" focusable="false">
+                <img src="./views/includes/images/seat1.jpg" class="img-fluid" width="500" height="500" focusable="false">
                 <rect width="100%" height="100%" fill="#eee" /></svg>
 
             </div>
@@ -126,7 +126,7 @@
                 <p class="lead">Information is more important than ever. We pledge to share updates with you as quickly as possible, with full transparency and, as always, with your safety foremost in mind.</p>
             </div>
             <div class="col-md-5 order-md-1">
-                <img src="./views/assets/images/seat22.jpg" class="img-fluid" width="500" height="500" focusable="false">
+                <img src="./views/includes/images/seat22.jpg" class="img-fluid" width="500" height="500" focusable="false">
                 <rect width="100%" height="100%" fill="#eee" /></svg>
 
             </div>
@@ -140,7 +140,7 @@
                 <p class="lead">We're doing everything we can to deliver a safe, healthy and clean travel experience. Caring for our customers and employees is our top priority. </p>
             </div>
             <div class="col-md-5">
-                <img src="./views/assets/images/seat3.jpg" class="img-fluid" width="500" height="500" focusable="false">
+                <img src="./views/includes/images/seat3.jpg" class="img-fluid" width="500" height="500" focusable="false">
                 <rect width="100%" height="100%" fill="#eee" /></svg>
 
             </div>
@@ -156,7 +156,7 @@
     <!-- FOOTER -->
     <footer class="container">
         <p class="float-end"><a href="#">Back to top</a></p>
-        <p>&copy; 2021–2022 El Madi, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2021–2022 Flights, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 </main>
 
