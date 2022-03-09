@@ -129,10 +129,19 @@ class Vol
             echo 'error' . $ex->getMessage();
         }
     }
+//     static public function sellFlight($conn, $data)
+// {
+//     $nbrSeats = date('Y-m-d');
+//     $stmt = $conn->prepare("UPDATE `vols` SET `sold` = '$nbrSeats' WHERE `nbrSeats`=?");
+//     $stmt->bind_param('i', $data);
+//     return $stmt->execute();
+// }
     static public function reserve($data)
     {
-        $stmt = DB::connect()->prepare('SELECT * FROM vols WHERE id=:id');
+        $stmt = DB::connect()->prepare('SELECT * FROM vols WHERE id=:id');        
         // $stmt= DB::connect()->prepare('SELECT COUNT (*) FROM booking WHERE id=:id');  
+        // $stmt= DB::connect()->prepare('SELECT COUNT (nbrSeats) FROM booking WHERE nbrSeats=:nbrSeats');  
+
         $stmt = DB::connect()->prepare('INSERT INTO booking (id_user, id_vol, flight_type, origin, destination, dep_time) VALUES (:id_user,:id_vol,:flight_type,:origin,:destination,:dep_time)');
         $stmt->bindParam(':id_user', $data['id_user']);
         $stmt->bindParam(':id_vol', $data['id_vol']);
@@ -146,9 +155,9 @@ class Vol
     }
     static public function addpass($data)
     {
-        $stmt = DB::connect()->prepare('INSERT INTO passenger (user_id, reservation_id, fullname,birthday) VALUES (:user_id,:reservation_id,:fullname,:birthday)');
+        $stmt = DB::connect()->prepare('INSERT INTO passenger (user_id, fullname,birthday) VALUES (:user_id,:fullname,:birthday)');
         $stmt->bindParam(':user_id', $data['user_id']);
-        $stmt->bindParam(':reservation_id', $data['reservation_id']);
+        // $stmt->bindParam(':reservation_id', $data['reservation_id']);
         $stmt->bindParam(':fullname', $data['fullname']);
         $stmt->bindParam(':birthday', $data['birthday']);
         if ($stmt->execute()) {

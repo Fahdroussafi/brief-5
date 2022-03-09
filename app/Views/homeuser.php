@@ -11,6 +11,10 @@ if (isset($_POST['reserve'])) {
     $data = new VolsController();
     $flights = $data->reserveFlight();
 }
+// if (isset($_POST['reserve'])) {
+//     $data = new VolsController();
+//     $flights = $data->sellFlight();
+// }
 $data = new VolsController();
 $flights = $data->getAllVols();
 
