@@ -2,17 +2,33 @@
 <link href="./views/includes/css/carousel.css" rel="stylesheet">
 
 
-<header>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand"><img src="./views/includes/images/Logo1.png"></a>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <p><a class="btn btn-lg btn-primary" href="<?php echo BASE_URL; ?>login">Reserve</a></p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+       
+            <form method="post" class="me-3">
+                <div class="form-white input-group" style="width: 250px;">
+                    <input type="text" name="search" class="form-control rounded" placeholder="Search or jump to... ( / )" aria-label="Search" aria-describedby="search-addon" />
+                    <button class="btn btn-info btn-sm" name="find" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </form>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL ?>showvols">Flight Reserved</a>
+                </li>
+            </ul>
+             <ul class="navbar-nav d-flex flex-row ms-auto me-3">
+  
+                    <!-- <button type="button" class="btn btn-primary" href="<?php echo BASE_URL ?>login">Login</button> -->
+                    <!-- <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown1"> -->
+                        <li><a class="btn btn-primary" href="<?php echo BASE_URL ?>login">Login</a></li>
                 </ul>
-            </div>
+            <!-- </ul> -->
         </div>
-    </nav>
-</header>
+    </div>
+</nav>
 
 
 <main>

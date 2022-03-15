@@ -22,7 +22,7 @@ if (isset($_POST['search'])) {
 
 <h1><span class="blue"></span>Admin<span class="blue"></span> <span class="yellow">Space</span>
 </h1>
-<div class="container">
+<div class="container mt-5">
     <div class="row mt-4">
         <!-- <div class="card">
         <div class="card-body bg-dark"> -->
@@ -95,7 +95,8 @@ if (isset($_POST['search'])) {
                                             :
                                             '<span class="badge bg-success">Round Trip</span>'; ?></td>
 
-                                    <td class="d-flex flex-row mt-4">
+
+                                    <td class="d-flex flex-row justify-content-evenly">
                                         <form method="post" class="mr-1" action="update">
                                             <input type="hidden" name="id" value="<?php echo $vols['id']; ?>">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>

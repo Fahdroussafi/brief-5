@@ -4,6 +4,3 @@
 		$deleteRev->deleteRev();
         Redirect::to("showvols");
 	}
-
-
-?>

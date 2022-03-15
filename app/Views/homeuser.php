@@ -20,6 +20,10 @@ $flights = $data->getAllVols();
 
 ?>
 
+<head>
+    <link rel="stylesheet" href="./views/includes/css/styles.css">
+
+</head>
 <link rel="stylesheet" href="./views/assets/css/style.css">
 <link rel="stylesheet" href="./views/assets/css/navbar.css">
 
@@ -49,7 +53,7 @@ $flights = $data->getAllVols();
             </ul>
             <ul class="navbar-nav d-flex flex-row ms-auto me-3">
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo BASE_URL ?>logout"><?php echo $_SESSION['username']; ?></a>
+                    <a class="nav-link" href="<?php echo BASE_URL ?>"><?php echo $_SESSION['username']; ?></a>
                 </li>
                 <li class="nav-item me-3 me-lg-0 dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -63,58 +67,84 @@ $flights = $data->getAllVols();
         </div>
     </div>
 </nav>
-<!-- Navbar -->
-<div class="content">
-    <div class="container">
-        <h1 class="mb-5 d-flex justify-content-center">BOOKING MANAGEMENT</h1>
+
+
+
+
+
+
+
+<div class="container mt-5">
+    <h1><span class="blue"></span>Booking<span class="blue"></span> <span class="yellow">Management</span>
+    </h1>
+    <div class="row mt-4">
+        <!-- <div class="card">
+        <div class="card-body bg-dark"> -->
         <div class="table-responsive">
-            <?php include('./views/includes/alerts.php'); ?>
-            <table class="table table-striped custom-table">
-                <thead>
-                    <tr>
-                        <th scope="col">Origin</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Departure Time</th>
-                        <th scope="col">Arrival Time</th>
-                        <th scope="col">Seats</th>
-                        <th scope="col">Flight Type</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($vols as $vol) : ?>
-                        <tr scope="row">
-                            <td>
-                                <?php echo $vol['origin']; ?>
-                            </td>
-                            <td><?php echo $vol['destination']; ?></td>
-                            <td>
-                                <?php echo $vol['dep_time']; ?>
-                            </td>
-                            <td><?php echo $vol['return_time']; ?></td>
-                            <td><?php echo $vol['nbrSeats']; ?></td>
-                            <td><?php echo $vol['flighttype']
-                                    ?
-                                    '<span class="badge bg-light text-dark">One way</span>'
-                                    :
-                                    '<span class="badge bg-warning">Round trip</span>';; ?></td>
-                            <td class="d-flex flex-row justify-content-evenly">
-                                <form method="POST" action="" class="mr-3">
-                                    <input type="text" hidden name="id" value="<?php echo $vol['id']; ?>">
-                                    <input type="text" hidden name="origin" value="<?php echo $vol['origin']; ?>">
-                                    <input type="text" hidden name="destination" value="<?php echo $vol['destination']; ?>">
-                                    <input type="text" hidden name="dep_time" value="<?php echo $vol['dep_time']; ?>">
-                                    <input type="text" hidden name="return_time" value="<?php echo $vol['return_time']; ?>">
-                                    <input type="text" hidden name="flighttype" value="<?php echo $vol['flighttype']; ?>">
-                                    <button class="btn btn-sm btn-success " type="submit" name="reserve">Book</button>
-                                </form>
-                            </td>
+            <div class="col-md-14 mx-auto">
+                <?php include('./views/includes/alerts.php'); ?>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Origin
+                            </th>
+                            <th scope="col">
+                                Destination
+                            </th>
+                            <th scope="col">
+                                Depart Time
+                            </th>
+                            <th scope="col">
+                                Arrival Time
+                            </th>
+                            <th scope="col">
+                                Price
+                            </th>
+                            <th scope="col">
+                                FlightType
+                            </th>
+
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+
+                        <?php foreach ($vols as $vols) : ?>
+                            <tr>
+                                <td scope="col"><?php echo $vols['origin']; ?>
+                                <td><?php echo $vols['destination']; ?></td>
+                                <td><?php echo $vols['dep_time']; ?></td>
+                                <td><?php echo $vols['return_time']; ?></td>
+                                <td><?php echo $vols['price']; ?></td>
+                                <td>
+                                    <?php echo $vols['flighttype']
+                                        ?
+                                        '<span class="badge bg-secondary">One Way</span>'
+                                        :
+                                        '<span class="badge bg-success">Round Trip</span>'; ?></td>
+
+                                <td class="d-flex flex-row justify-content-evenly">
+                                    <form method="POST" action="" class="mr-3">
+                                        <input type="text" hidden name="id" value="<?php echo $vols['id']; ?>">
+                                        <input type="text" hidden name="origin" value="<?php echo $vols['origin']; ?>">
+                                        <input type="text" hidden name="destination" value="<?php echo $vols['destination']; ?>">
+                                        <input type="text" hidden name="dep_time" value="<?php echo $vols['dep_time']; ?>">
+                                        <input type="text" hidden name="return_time" value="<?php echo $vols['return_time']; ?>">
+                                        <input type="text" hidden name="flighttype" value="<?php echo $vols['flighttype']; ?>">
+                                        <button class="btn btn-sm btn-success" type="submit" name="reserve">Book</button>
+                                    </form>
+                                </td>
+                            </tr>
+
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+
+
 <script src="./views/assets/js/jquery-3.3.1.min.js"></script>
 <script src="./views/assets/js/main.js"></script>

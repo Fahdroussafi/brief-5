@@ -14,8 +14,13 @@ if (isset($_POST['reserve'])) {
 }
 ?>
 
-<link rel="stylesheet" href="./views/assets/css/style.css">
-<link rel="stylesheet" href="./views/assets/css/navbar.css">
+<head>
+    <link rel="stylesheet" href="./views/includes/css/styles.css">
+
+</head>
+<!-- <link rel="stylesheet" href="./views/assets/css/style.css">
+<link rel="stylesheet" href="./views/assets/css/navbar.css"> -->
+
 
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -59,53 +64,63 @@ if (isset($_POST['reserve'])) {
     </div>
 </nav>
 <!-- Navbar -->
-<div class="content">
-    <div class="container">
-        <h1 class="mb-5 d-flex justify-content-center">FLIGHTS RESERVED</h1>
-        <div class="table-responsive">
-            <?php include('./views/includes/alerts.php'); ?>
-            <table class="table table-striped custom-table">
-                <thead>
-                    <tr>
-                        <th scope="col">Origin</th>
-                        <th scope="col">Destination</th>
-                        <th scope="col">Departure Time</th>
-                        <th scope="col">Flight Type</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($vols as $vol) : ?>
-                        <tr scope="row">
-                            <td>
-                                <?php echo $vol['origin']; ?>
-                            </td>
-                            <td><?php echo $vol['destination']; ?></td>
-                            <td>
-                                <?php echo $vol['dep_time']; ?>
-                            </td>
-                            <td><?php echo $vol['flight_type']
-                                    ?
-                                    '<span class="badge bg-light text-dark">One way</span>'
-                                    :
-                                    '<span class="badge bg-warning">Round trip</span>';; ?></td>
-                            <td class="d-flex flex-row justify-content-evenly">
-                                <form method="post" class="mr-2" action="addpassenger">
-                                    <input type="hidden" name="id" value="<?php echo $vol['id']; ?>">
-                                    <button class="btn btn btn-success"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
-                                </form>
 
-                                <form method="POST" action="deleterev" class="mr-2">
-                                    <input type="hidden" name="iddelete" value="<?php echo $vol['id']; ?>">
-                                    <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
-                                </form>
-                            </td>
+
+<!-- <div class="content"> -->
+<div class="container mt-5">
+    <!-- <div class="container"> -->
+    <h1><span class="blue"></span>FLIGHTS<span class="blue"></span> <span class="yellow">RESERVED</span>
+    </h1>
+    <!-- <h1 class="mb-5 d-flex justify-content-center">FLIGHTS RESERVED</h1> -->
+    <!-- <div class="table-responsive"> -->
+    <div class="row mt-4">
+        <!-- <div class="card">
+        <div class="card-body bg-dark"> -->
+        <div class="table-responsive">
+            <div class="col-md-14 mx-auto">
+                <?php include('./views/includes/alerts.php'); ?>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Origin</th>
+                            <th scope="col">Destination</th>
+                            <th scope="col">Departure Time</th>
+                            <th scope="col">Flight Type</th>
+                            <th scope="col">Action</th>
                         </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php foreach ($vols as $vol) : ?>
+                            <tr scope="row">
+                                <td>
+                                    <?php echo $vol['origin']; ?>
+                                </td>
+                                <td><?php echo $vol['destination']; ?></td>
+                                <td>
+                                    <?php echo $vol['dep_time']; ?>
+                                </td>
+                                <td><?php echo $vol['flight_type']
+                                        ?
+                                        '<span class="badge bg-light text-dark">One way</span>'
+                                        :
+                                        '<span class="badge bg-warning">Round trip</span>';; ?></td>
+                                <td class="d-flex flex-row justify-content-evenly">
+                                    <form method="post" class="mr-2" action="addpassenger">
+                                        <input type="hidden" name="id" value="<?php echo $vol['id']; ?>">
+                                        <button class="btn btn btn-success"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
+                                    </form>
+
+                                    <form method="POST" action="deleterev" class="mr-2">
+                                        <input type="hidden" name="iddelete" value="<?php echo $vol['id']; ?>">
+                                        <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
+                                    </form>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</div>
-<script src="./views/assets/js/jquery-3.3.1.min.js"></script>
-<script src="./views/assets/js/main.js"></script>
+
+        <script src="./views/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="./views/assets/js/main.js"></script>
