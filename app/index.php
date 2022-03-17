@@ -2,13 +2,7 @@
 require_once './autoload.php';
 require_once './views/includes/header.php';
 require_once './views/includes/footer.php';
-// require_once './Controllers/HomeController.php';
-// require_once './Controllers/AdminController.php';
-// require_once './Controllers/UsersController.php';
-// require_once './Controllers/FlightController.php';
-// require_once './Controllers/PessengerController.php';
-// require_once './Controllers/ReservationController.php';
-// require_once './Views/includes/alerts.php';
+
 
 
 $homeuser = new HomeController();

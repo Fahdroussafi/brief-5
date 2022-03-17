@@ -8,32 +8,32 @@ class Vol
         $stmt->execute();
         return $stmt->fetchAll();
         // $stmt->close();
-        $stmt = null;
+        // $stmt = null;
     }
 
-    static public function getAllres($id_user)
-    {
-        if ($_SESSION['role'] == 1) {
-            $stmt = DB::connect()->prepare('SELECT
-                booking.id,
-                booking.origin,
-                booking.destination,
-                booking.dep_time,
-                users.fullname,
-                booking.id_vol,
-                booking.flight_type
-            FROM
-                booking
-            INNER JOIN users ON booking.id_user = users.id;');
-            $stmt->execute();
-            return $stmt->fetchAll();
-        } else {
-            $stmt = DB::connect()->prepare('SELECT * FROM booking WHERE id_user=:id_user');
-            $stmt->bindParam(':id_user', $id_user);
-            $stmt->execute();
-            return $stmt->fetchAll();
-        }
-    }
+    // static public function getAllres($id_user)
+    // {
+    //     if ($_SESSION['role'] == 1) {
+    //         $stmt = DB::connect()->prepare('SELECT
+    //             booking.id,
+    //             booking.origin,
+    //             booking.destination,
+    //             booking.dep_time,
+    //             users.fullname,
+    //             booking.id_vol,
+    //             booking.flight_type
+    //         FROM
+    //             booking
+    //         INNER JOIN users ON booking.id_user = users.id;');
+    //         $stmt->execute();
+    //         return $stmt->fetchAll();
+    //     } else {
+    //         $stmt = DB::connect()->prepare('SELECT * FROM booking WHERE id_user=:id_user');
+    //         $stmt->bindParam(':id_user', $id_user);
+    //         $stmt->execute();
+    //         return $stmt->fetchAll();
+    //     }
+    // }
     static public function getVol($data)
     {
         $id = $data['id'];
@@ -129,13 +129,7 @@ class Vol
             echo 'error' . $ex->getMessage();
         }
     }
-//     static public function sellFlight($conn, $data)
-// {
-//     $nbrSeats = date('Y-m-d');
-//     $stmt = $conn->prepare("UPDATE `vols` SET `sold` = '$nbrSeats' WHERE `nbrSeats`=?");
-//     $stmt->bind_param('i', $data);
-//     return $stmt->execute();
-// }
+
     static public function reserve($data)
     {
         $stmt = DB::connect()->prepare('SELECT * FROM vols WHERE id=:id');        

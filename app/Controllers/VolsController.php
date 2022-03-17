@@ -10,7 +10,7 @@ class VolsController
 
     public function getAllreservations()
     {
-        $vols = Vol::getAllres($_SESSION['id']);
+        $vols = Vol::getAllres($_SESSION['id']); // Sessions store user information to be used across multiple pages Session variables last until the user closes the browser.
         return $vols;
     }
     public function getOneVol()

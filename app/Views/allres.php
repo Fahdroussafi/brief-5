@@ -3,12 +3,12 @@
 
 if ($_SESSION['role'] == 0) {
     Redirect::to(BASE_URL);
-}
+// }
 
-if (isset($_POST['reserve'])) {
-    $data = new VolsController();
-    $vols = $data->reserveFlight();
-} else {
+// if (isset($_POST['reserve'])) {
+//     $data = new VolsController();
+//     $vols = $data->reserveFlight();
+// } else {
     $data = new VolsController();
     $vols = $data->getAllreservations();
 }
@@ -45,18 +45,18 @@ if (isset($_POST['reserve'])) {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($reservations as $reservation) : ?>
+                        <?php foreach ($vols as $vol) : ?>
                             <tr>
                                 <td></td>
-                                <td><?php echo $reservation['id']; ?></td>
-                                <td><?php echo $reservation['user_id']; ?></td>
-                                <td><?php echo $reservation['flight_id']; ?></td>
-                                <td><?php echo $reservation['flight_type']; ?></td>
-                                <td><?php echo $reservation['origin']; ?></td>
-                                <td><?php echo $reservation['destination']; ?></td>
-                                <td><?php echo $reservation['dep_time']; ?></td>
+                                <td><?php echo $vols['id']; ?></td>
+                                <td><?php echo $vols['id_user']; ?></td>
+                                <td><?php echo $vols['id_vol']; ?></td>
+                                <td><?php echo $vols['flight_type']; ?></td>
+                                <td><?php echo $booking['origin']; ?></td>
+                                <td><?php echo $booking['destination']; ?></td>
+                                <td><?php echo $booking['dep_time']; ?></td>
                                 <td>
-                                    <?php echo $reservation['flight_type'] == "One Way"
+                                    <?php echo $booking['flight_type'] == "One Way"
                                         ?
                                         '<h5><span class="badge bg-primary"><i class="fa fa-location-arrow"></i> One Way</span></h5>'
                                         :
