@@ -7,20 +7,20 @@ class User{
         try{
             $query = 'SELECT * FROM users WHERE username=:username';
             $stmt = DB::connect()->prepare($query);
-            $stmt->execute(array(":username" => $username));
-            $user = $stmt->fetch(PDO::FETCH_OBJ);
-            return $user;
-            if($stmt->execute()){
+            $stmt->execute(array(":username" => $username)); // array(":username" => $username) : the key is the same as the value
+            $user = $stmt->fetch(PDO::FETCH_OBJ); // PDO::FETCH_OBJ : returns an object
+            return $user;   // returns the user object
+            if($stmt->execute()){   // if the query is executed
                 return 'ok';
             }
-        }catch(PDOException $ex){
-            echo 'error'.$ex->getMessage();
+        }catch(PDOException $ex){ // if the query fails 
+            echo 'error'.$ex->getMessage();   // echo the error message
         }
     }
     static public function createUser($data){
         try{
         $stmt = DB::connect()->prepare('INSERT INTO users (fullname,username,password) VALUES (:fullname,:username,:password)');
-        $stmt->bindParam(':fullname',$data['fullname']);
+        $stmt->bindParam(':fullname',$data['fullname']); // bindParam : binds the value of the parameter to the variable
         $stmt->bindParam(':username',$data['username']);
         $stmt->bindParam(':password',$data['password']);
         if($stmt->execute()){

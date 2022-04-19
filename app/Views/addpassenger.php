@@ -66,24 +66,21 @@ if (isset($_POST['addpass'])) {
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <img src="./views/assets/images/herosm.png" alt="">
-                                        <!-- <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i> -->
                                         <span class="h1 fw-bold mb-0">ADD pessenger</span>
                                     </div>
 
-                                    <!-- <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Update Flight</h5> -->
-
                                     <div class="form-outline mb-4">
-                                        <!-- <input type="text" hidden name="reservation_id" class="form-control form-control-lg" /> -->
-                                        <input type="text" hidden name="user_id" class="form-control form-control-lg" />
-                                        <!-- <label for="reservation_id" class="form-label">Origin</label> -->
+                                        <input type="text" hidden name="id_user" class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline mb-4">
+                                        <input type="text" hidden name="vol_id" class="form-control form-control-lg" value="<?= $_POST['id'] ?>"/>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
                                         <input type="text" name="fullname" placeholder="Full Name" class="form-control form-control-lg" required />
-                                        <!-- <label for="fullname" class="form-label">Full Name</label> -->
                                     </div>
                                     <div class="form-outline mb-4">
                                         <input type="datetime-local" name="birthday" placeholder="Birthday" class="form-control form-control-lg" required />
-                                        <!-- <label for="birthday" class="form-label">Birthday</label> -->
                                     </div>
                                     <div class="pt-1 mb-4">
                                         <button type="submit" name="addpass" class="btn btn-dark btn-lg btn-block">Add Passenger to Flight</button>

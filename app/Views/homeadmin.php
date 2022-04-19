@@ -85,8 +85,8 @@ if (isset($_POST['search'])) {
                                     <td><?php echo $vols['dep_time']; ?></td>
                                     <td><?php echo $vols['return_time']; ?></td>
                                     <td><?php echo $vols['price']; ?></td>
-                                    <td><?= $vols["nbrSeats"] - $vols["nbrSeatsReserved"] ?> / <?= $vols["nbrSeats"] ?></td>
-                                    <td><?php echo $vols['nbrSeatsReserved']; ?></td>
+                                    <td><?= $vols["nbrSeats"]; ?></td>
+                                    <!-- <td><?php echo $vols['nbrSeatsReserved']; ?></td> -->
 
                                     <td>
                                         <?php echo $vols['flighttype']
@@ -98,11 +98,11 @@ if (isset($_POST['search'])) {
 
                                     <td class="d-flex flex-row justify-content-evenly">
                                         <form method="post" class="mr-1" action="update">
-                                            <input type="hidden" name="id" value="<?php echo $vols['id']; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $vols['vol_id']; ?>">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </form>
                                         <form method="post" class="mr-1" action="delete">
-                                            <input type="hidden" name="id" value="<?php echo $vols['id']; ?>">
+                                            <input type="hidden" name="id" value="<?php echo $vols['vol_id']; ?>">
                                             <button class="btn btn-sm btn-danger"><i class="fa p-auto fa-trash"></i></button>
                                         </form>
                                     </td>

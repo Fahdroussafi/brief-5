@@ -95,11 +95,12 @@ $flights = $data->getAllVols();
                                 Arrival Time
                             </th>
                             <th scope="col">
-                                Price
+                                Seats
                             </th>
                             <th scope="col">
                                 FlightType
                             </th>
+                            
 
                         </tr>
                     </thead>
@@ -111,7 +112,7 @@ $flights = $data->getAllVols();
                                 <td><?php echo $vols['destination']; ?></td>
                                 <td><?php echo $vols['dep_time']; ?></td>
                                 <td><?php echo $vols['return_time']; ?></td>
-                                <td><?php echo $vols['price']; ?></td>
+                                <td><?php echo $vols['nbrSeats']; ?></td>
                                 <td>
                                     <?php echo $vols['flighttype']
                                         ?
@@ -121,7 +122,7 @@ $flights = $data->getAllVols();
 
                                 <td class="d-flex flex-row justify-content-evenly">
                                     <form method="POST" action="" class="mr-3">
-                                        <input type="text" hidden name="id" value="<?php echo $vols['id']; ?>">
+                                        <input type="text" hidden name="id" value="<?php echo $vols['vol_id']; ?>">
                                         <input type="text" hidden name="origin" value="<?php echo $vols['origin']; ?>">
                                         <input type="text" hidden name="destination" value="<?php echo $vols['destination']; ?>">
                                         <input type="text" hidden name="dep_time" value="<?php echo $vols['dep_time']; ?>">
@@ -142,5 +143,5 @@ $flights = $data->getAllVols();
 
 
 
-<script src="./views/assets/js/jquery-3.3.1.min.js"></script>
-<script src="./views/assets/js/main.js"></script>
+<!-- <script src="./views/assets/js/jquery-3.3.1.min.js"></script>
+<script src="./views/assets/js/main.js"></script> -->

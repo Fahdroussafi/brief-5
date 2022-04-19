@@ -16,30 +16,41 @@ class VolsController
     public function getOneVol()
     {
         if (isset($_POST['id'])) {
-            $data = array('id' => $_POST['id']);
-            $vol = Vol::getVol($data);
+            $data = array('id' => $_POST['id']); // $_POST['id'] is the id of the vol
+            $vol = Vol::getVol($data); // $ gains access to method getVol and vol class
             return $vol;
         }
     }
     public function findVols()
     {
         if (isset($_POST['search'])) {
-            $data = array('search' => $_POST['search']);
+            $data = array('search' => $_POST['search']); // $_POST['search'] is the value of the search input
         }
         $vols = Vol::searchVol($data);
         return $vols;
     }
+
+    // get pessengers corresponding to a vol
+    public function getpassengers()
+    {
+        if (isset($_POST['id'])) {
+            $data = array('id' => $_POST['id']); // $_POST['id'] is the id of the vol
+            $passengers = Vol::getpassengers($data); // $ gains access to method getpassengers and vol class
+            return $passengers;
+        }
+    }
+    
     public function addVol()
     {
         if (isset($_POST['submit'])) {
             $data = array(
-                'origin' => $_POST['origin'],
+                'origin' => $_POST['origin'], // => origin will have the corresponding value of post origin
                 'destination' => $_POST['destination'],
                 'dep_time' => $_POST['dep_time'],
                 'return_time' => $_POST['return_time'],
                 'price' => $_POST['price'],
                 'nbrSeats' => $_POST['nbrSeats'],
-                'nbrSeatsReserved' => $_POST['nbrSeatsReserved'],
+                // 'nbrSeatsReserved' => $_POST['nbrSeatsReserved'],
                 'flighttype' => $_POST['flighttype'],
             );
             $result = Vol::add($data);
@@ -53,7 +64,7 @@ class VolsController
     }
     public function updateVol()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit'])) { 
             $data = array(
                 'id' => $_POST['id'],
                 'origin' => $_POST['origin'],
@@ -105,6 +116,7 @@ class VolsController
             $data = array(
                 'id_user' => $_SESSION['id'],
                 'id_vol' => $_POST['id'],
+                // 'passenger_id' => $_POST['passenger_id'],
                 'destination' => $_POST['destination'],
                 'origin' => $_POST['origin'],
                 'dep_time' => $_POST['dep_time'],
@@ -113,6 +125,7 @@ class VolsController
 
             $result = Vol::reserve($data);
             if ($result === 'ok') {
+                Vol::decrease($data['id_vol']);
                 Session::set('success', 'Flight reserved');
                 Redirect::to('homeuser');
             } else {
@@ -120,36 +133,17 @@ class VolsController
             }
         }
     }
-    // public function sellFlight()
-    // {
-    //     if (isset($_POST['reserve'])) {
-    //         $data = array(
-    //             'id_user' => $_SESSION['id'],
-    //             'id_vol' => $_POST['id'],
-    //             'destination' => $_POST['destination'],
-    //             'origin' => $_POST['origin'],
-    //             'dep_time' => $_POST['dep_time'],
-    //             'flighttype' => $_POST['flighttype'],
-    //         );
 
-    //         $result = Vol::sellFlight($data);
-    //         if ($result === 'ok') {
-    //             Session::set('success', 'Flight reserved');
-    //             Redirect::to('homeuser');
-    //         } else {
-    //             echo $result;
-    //         }
-    //     }
-    // }
     public function addPassenger()
     {
         if (isset($_POST['addpass'])) {
             $data = array(
-                'user_id' => $_SESSION['id'],
-                // 'reservation_id' => $_POST['reservation_id'],
+                'id_user' => $_SESSION['id'],
+                'vol_id' => $_POST['vol_id'],
                 'fullname' => $_POST['fullname'],
                 'birthday' => $_POST['birthday'],
             );
+       
             $result = Vol::addpass($data);
             if ($result === 'ok') {
                 Session::set('success', 'Passenger added');

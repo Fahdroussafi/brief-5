@@ -52,10 +52,10 @@ if (isset($_POST['submit'])) {
                             <label for="nbrSeats">Seats*</label>
                             <input type="text" name="nbrSeats" class="form-control" placeholder="Seats">
                         </div>
-                        <div class="form-group mb-4">
+                        <!-- <div class="form-group mb-4">
                             <label for="nbrSeatsReserved">Seats Reserved*</label>
                             <input type="text" name="nbrSeatsReserved" class="form-control" placeholder="Seats Reserved">
-                        </div>
+                        </div> -->
 
                         <div class="form-group mb-4">
                             <label>Flight Type*</label>

@@ -12,14 +12,18 @@ if (isset($_POST['reserve'])) {
     $data = new VolsController();
     $vols = $data->getAllreservations();
 }
+// when you press button view show all pessengers of the flight
+// if (isset($_POST['view'])) {
+//     $data = new VolsController();
+//     $passengers = $data->getpassengers();
+// }
+
 ?>
 
 <head>
     <link rel="stylesheet" href="./views/includes/css/styles.css">
 
 </head>
-<!-- <link rel="stylesheet" href="./views/assets/css/style.css">
-<link rel="stylesheet" href="./views/assets/css/navbar.css"> -->
 
 
 <!-- Navbar -->
@@ -27,7 +31,6 @@ if (isset($_POST['reserve'])) {
     <div class="container-fluid">
         <a class="navbar-brand" href="<?php echo BASE_URL ?>">
             <img src="./views/assets/images/whitelogo.png" alt="">
-            <!-- <i class="fab fa-github fa-2x mx-3 ps-1"></i> -->
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars"></i>
@@ -85,6 +88,7 @@ if (isset($_POST['reserve'])) {
                             <th scope="col">Origin</th>
                             <th scope="col">Destination</th>
                             <th scope="col">Departure Time</th>
+                            <!-- <th scope="col">Pessengers</th> -->
                             <th scope="col">Flight Type</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -106,12 +110,15 @@ if (isset($_POST['reserve'])) {
                                         '<span class="badge bg-warning">Round trip</span>';; ?></td>
                                 <td class="d-flex flex-row justify-content-evenly">
                                     <form method="post" class="mr-2" action="addpassenger">
-                                        <input type="hidden" name="id" value="<?php echo $vol['id']; ?>">
+                                        <input type="text" hidden name="id" value="<?php echo $vol['id_vol']; ?>">
                                         <button class="btn btn btn-success"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
                                     </form>
-
+                                    <form method="post" class="mr-2" action="viewpassenger">
+                                        <input type="text" hidden name="id" value="<?php echo $vol['id_user']; ?>">
+                                        <button name="view" class="btn btn btn-info"><i class="fa fa-eye"></i></button>
+                                    </form>
                                     <form method="POST" action="deleterev" class="mr-2">
-                                        <input type="hidden" name="iddelete" value="<?php echo $vol['id']; ?>">
+                                        <input type="hidden" name="iddelete" value="<?php echo $vol['booking_id']; ?>">
                                         <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
                                     </form>
                                 </td>
@@ -121,6 +128,3 @@ if (isset($_POST['reserve'])) {
                 </table>
             </div>
         </div>
-
-        <script src="./views/assets/js/jquery-3.3.1.min.js"></script>
-        <script src="./views/assets/js/main.js"></script>
