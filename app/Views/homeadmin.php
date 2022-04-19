@@ -1,7 +1,11 @@
 <?php
-
+  
 if ($_SESSION['role'] == 0) {
     Redirect::to(BASE_URL);
+}
+if(isset($_POST['id'])){
+    $existVol= new VolsController();
+    $existVol->deleteVol();
 }
 
 if (isset($_POST['search'])) {
@@ -101,7 +105,7 @@ if (isset($_POST['search'])) {
                                             <input type="hidden" name="id" value="<?php echo $vols['vol_id']; ?>">
                                             <button class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                                         </form>
-                                        <form method="post" class="mr-1" action="delete">
+                                        <form method="post" class="mr-1" action="homeadmin">
                                             <input type="hidden" name="id" value="<?php echo $vols['vol_id']; ?>">
                                             <button class="btn btn-sm btn-danger"><i class="fa p-auto fa-trash"></i></button>
                                         </form>

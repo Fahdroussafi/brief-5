@@ -87,7 +87,7 @@ class VolsController
     public function deleteVol()
     {
         if (isset($_POST['id'])) {
-            $data['id'] = $_POST['id'];
+            $data['id'] = $_POST['id']; // $_POST['id'] is the id of the vol
             $result = Vol::delete($data);
             if ($result === 'ok') {
                 Session::set('success', 'Flight Deleted');

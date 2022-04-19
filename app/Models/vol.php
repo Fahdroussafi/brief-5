@@ -104,7 +104,7 @@ class Vol
     {
         $id = $data['id'];
         try {
-            $query = 'DELETE FROM vols WHERE id=:id';
+            $query = 'DELETE FROM vols WHERE vol_id=:id';
             $stmt = DB::connect()->prepare($query);
             $stmt->execute(array(":id" => $id));
             if ($stmt->execute()) {

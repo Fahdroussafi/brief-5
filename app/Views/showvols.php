@@ -5,6 +5,12 @@ if ($_SESSION['role'] == 1) {
     Redirect::to(BASE_URL);
 }
 
+if(isset($_POST['iddelete'])){
+		$deleteRev = new VolsController();
+		$deleteRev->deleteRev();
+        Redirect::to("showvols");
+}
+
 if (isset($_POST['reserve'])) {
     $data = new VolsController();
     $vols = $data->reserveFlight();
@@ -12,11 +18,6 @@ if (isset($_POST['reserve'])) {
     $data = new VolsController();
     $vols = $data->getAllreservations();
 }
-// when you press button view show all pessengers of the flight
-// if (isset($_POST['view'])) {
-//     $data = new VolsController();
-//     $passengers = $data->getpassengers();
-// }
 
 ?>
 
@@ -117,7 +118,7 @@ if (isset($_POST['reserve'])) {
                                         <input type="text" hidden name="id" value="<?php echo $vol['id_user']; ?>">
                                         <button name="view" class="btn btn btn-info"><i class="fa fa-eye"></i></button>
                                     </form>
-                                    <form method="POST" action="deleterev" class="mr-2">
+                                    <form method="POST" action="showvols" class="mr-2">
                                         <input type="hidden" name="iddelete" value="<?php echo $vol['booking_id']; ?>">
                                         <button class="btn btn btn-danger"><i class="fa fa-trash la la-trash"></i></button>
                                     </form>

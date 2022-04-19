@@ -140,8 +140,3 @@ $flights = $data->getAllVols();
         </div>
     </div>
 </div>
-
-
-
-<!-- <script src="./views/assets/js/jquery-3.3.1.min.js"></script>
-<script src="./views/assets/js/main.js"></script> -->
