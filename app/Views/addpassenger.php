@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['addpass'])) {
+if (isset($_POST['addpass'])) { // If the form is submitted
     $addPassenger = new VolsController();
     $addPassenger->addPassenger();
 
@@ -80,7 +80,7 @@ if (isset($_POST['addpass'])) {
                                         <input type="text" name="fullname" placeholder="Full Name" class="form-control form-control-lg" required />
                                     </div>
                                     <div class="form-outline mb-4">
-                                        <input type="datetime-local" name="birthday" placeholder="Birthday" class="form-control form-control-lg" required />
+                                        <input type="date" name="birthday" placeholder="Birthday" class="form-control form-control-lg" required />
                                     </div>
                                     <div class="pt-1 mb-4">
                                         <button type="submit" name="addpass" class="btn btn-dark btn-lg btn-block">Add Passenger to Flight</button>

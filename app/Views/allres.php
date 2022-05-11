@@ -9,8 +9,8 @@ if ($_SESSION['role'] == 0) {
 //     $data = new VolsController();
 //     $vols = $data->reserveFlight();
 // } else {
-    $data = new VolsController();
-    $vols = $data->getAllreservations();
+    $data = new VolsController(); // Instance of the class
+    $vols = $data->getAllreservations(); // Call the method
 }
 ?>
 

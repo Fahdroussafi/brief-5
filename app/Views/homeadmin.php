@@ -3,12 +3,12 @@
 if ($_SESSION['role'] == 0) {
     Redirect::to(BASE_URL);
 }
-if(isset($_POST['id'])){
+if(isset($_POST['id'])){ // if the form was submitted
     $existVol= new VolsController();
     $existVol->deleteVol();
 }
 
-if (isset($_POST['search'])) {
+if (isset($_POST['search'])) { // If the search button is clicked
     $data = new VolsController();
     $vols = $data->findVols();
 } else {
@@ -71,9 +71,9 @@ if (isset($_POST['search'])) {
                                 <th scope="col">
                                     Seats Available
                                 </th>
-                                <th scope="col">
+                                <!-- <th scope="col">
                                     Seats Reserved
-                                </th>
+                                </th> -->
                                 <th scope="col">
                                     FlightType
                                 </th>
@@ -97,7 +97,8 @@ if (isset($_POST['search'])) {
                                             ?
                                             '<span class="badge bg-secondary">One Way</span>'
                                             :
-                                            '<span class="badge bg-success">Round Trip</span>'; ?></td>
+                                            '<span class="badge bg-success">Round Trip</span>'; ?>
+                                    </td>
 
 
                                     <td class="d-flex flex-row justify-content-evenly">

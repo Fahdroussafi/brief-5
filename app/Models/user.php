@@ -32,4 +32,18 @@ class User{
 
         $stmt = null;
     }
+
+    static public function searchPessenger($data)
+    {
+        $search = $data['search'];
+        try {
+            $query = 'SELECT * FROM passenger WHERE fullname LIKE ?';
+            $stmt = DB::connect()->prepare($query);
+            $stmt->execute(array('%' . $search . '%'));
+            $pessengers = $stmt->fetchAll();
+            return $pessengers;
+        } catch (PDOException $ex) {
+            echo 'error' . $ex->getMessage();
+        }
+    }
 }

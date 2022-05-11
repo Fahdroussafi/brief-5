@@ -136,12 +136,12 @@ class VolsController
 
     public function addPassenger()
     {
-        if (isset($_POST['addpass'])) {
-            $data = array(
-                'id_user' => $_SESSION['id'],
-                'vol_id' => $_POST['vol_id'],
-                'fullname' => $_POST['fullname'],
-                'birthday' => $_POST['birthday'],
+        if (isset($_POST['addpass'])) { // if the button is clicked
+            $data = array(  // data to be inserted
+                'id_user' => $_SESSION['id'], // $_SESSION['id'] is the id of the user
+                'vol_id' => $_POST['vol_id'], // $_POST['vol_id'] is the id of the vol
+                'fullname' => $_POST['fullname'], // $_POST['fullname'] is the value of the fullname input
+                'birthday' => $_POST['birthday'], // $_POST['birthday'] is the value of the birthday input
             );
        
             $result = Vol::addpass($data);
