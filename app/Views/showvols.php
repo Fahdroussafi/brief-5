@@ -115,7 +115,7 @@ if (isset($_POST['reserve'])) {
                                         <button class="btn btn btn-success"><i class="fa fa-users"></i> <i class="fa fa-plus"></i></button>
                                     </form>
                                     <form method="post" class="mr-2" action="viewpassenger">
-                                        <input type="text" hidden name="id" value="<?php echo $vol['id_user']; ?>">
+                                        <input type="text" hidden name="id" value="<?php echo $vol['id_vol']; ?>">
                                         <button name="view" class="btn btn btn-info"><i class="fa fa-eye"></i></button>
                                     </form>
                                     <form method="POST" action="showvols" class="mr-2">

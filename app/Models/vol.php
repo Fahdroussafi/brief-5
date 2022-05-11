@@ -39,8 +39,8 @@ class Vol
 // show passengers of a coresponding vol from table passengers
     static public function getpassengers($data)
     {
-        $stmt = DB::connect()->prepare('SELECT * FROM passenger WHERE id_user=:id_user'); // inner join : to get all the data from the two tables
-        $stmt->bindParam(':id_user', $data['id']);  // bindParam : binds the value of the parameter to the variable
+        $stmt = DB::connect()->prepare('SELECT * FROM passenger WHERE vol_id=:vol_id'); // inner join : to get all the data from the two tables
+        $stmt->bindParam(':vol_id', $data['id']);  // bindParam : binds the value of the parameter to the variable
         $stmt->execute();
         return $stmt->fetchAll();
     }
